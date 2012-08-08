@@ -22,7 +22,7 @@ Concrete then runs our test suite.
     cd deployment-talk
     git config --add concrete.runner "npm test"
     concrete .
-    forever /usr/local/bin/concrete deployment-talk
+    forever start /usr/local/bin/concrete /home/ubuntu/deployment-talk
 
 ## Team notifications
 Tests will fail.  So we need to know when they do.  Concrete executes a git hook after every test.  Our current fail
