@@ -35,6 +35,7 @@ Concrete has a success hook.  Since we use Heroku, our success hook is a simple 
 
     ln -s build-worked .git/hook/build-worked
 
+
 ## Links
 * https://help.github.com/articles/post-receive-hooks
 * https://github.com/ryankee/concrete
