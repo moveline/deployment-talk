@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+
+var nodemailer = require("nodemailer")
+
+// create reusable transport method (opens pool of SMTP connections)
+var smtpTransport = nodemailer.createTransport("SMTP",{
+    service: "Gmail",
+    auth: {
+        user: "gmail.user@gmail.com",
+        pass: "userpass"
+    }
+})
+
+var mailOptions = {
+    from: '[MOVELINE-CI]',
+    to: 'product-team@moveline.com',
+    subject: 'BUILD FAILED!!',
+    text: 'Visit http://ci.moveline.com:4567 for more details'
+}
+
+// send mail with defined transport object
+smtpTransport.sendMail(mailOptions, function(error, response){
+    smtpTransport.close()
+
+    if(error) {
+        console.log(error)
+        process.exit(1)
+    } else {
+        console.log("Message sent: " + response.message)
+        process.exit(0)
+    }
+})
+
